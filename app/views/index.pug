@@ -1,0 +1,103 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(http-equiv='refresh', content='10')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title IoT Dashboard
+    link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css', rel='stylesheet', integrity='sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD', crossorigin='anonymous')
+    link(rel='stylesheet', type='text/css', href='stylesheets/style.css')
+  body
+    .container-fluid.text-center
+      nav.navbar.navbar-expand-lg.bg-light
+        .container-fluid
+          a.navbar-brand(href='#') IoT Dashboard
+          button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+          #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.me-auto.mb-2.mb-lg-0
+              li.nav-item
+                a.nav-link.active(aria-current='page', href='/') Statistics
+              li.nav-item
+                a.nav-link(href='/raw-data') Raw Data
+              li.nav-item
+                a.nav-link(href='/filtered-data') Filtered Data
+      .row
+        .col.d-flex.justify-content-start
+          p.m-3 Auto refresh every 10 secs
+          p.m-3 Server start scanning on #{serverScanningStartingTimestamp} today
+      .row
+        .col-4
+          .card.m-3(style='width: 18rem;')
+            .card-body
+              h4.card-title.mb-3 IoT Device Info
+              h5.card-text Current Detected Devices: 
+              h5.card-text.coloured
+                | #{deviceCount}
+              h5.card-text Current On Devices: 
+              h5.card-text.coloured
+                | #{onlineDeviceCount}
+              h5.card-text Current Off Devices: 
+              h5.card-text.coloured
+                | #{offlineDeviceCount}
+              h5.card-text Current Lost Connection Devices: 
+              h5.card-text.coloured
+                | #{lostConnDeviceCount}
+        .col-4
+          .card.m-3(style='width: 18rem;')
+            .card-body
+              h4.card-title.mb-3 General Sewing Machine Info
+              h5.card-text Current Scanned Machines: 
+              h5.card-text.coloured
+                | #{generalMachineCount}
+              h5.card-text Current Products: 
+              h5.card-text.coloured
+                | #{generalMachineProductCount}
+              h5.card-text Current Passed QC Outputs/Target: 
+              h5.card-text.coloured
+                | #{generalMachineOutputCount} / #{generalMachineTarget}
+              h5.card-text Current Defects/Target: 
+              h5.card-text.coloured
+                | #{generalMachineDefectCount} / #{generalMachineTarget}
+        .col-4
+          .card.m-3(style='width: 18rem;')
+            .card-body
+              h4.card-title.mb-3 Computer Sewing Machine Info
+              h5.card-text Current Scanned Machines: 
+              h5.card-text.coloured
+                | #{comSewMachineCount}
+              h5.card-text Current Products: 
+              h5.card-text.coloured
+                | #{comSewMachineProductCount}
+              h5.card-text Current Passed QC Outputs/Target: 
+              h5.card-text.coloured
+                | #{comSewMachineOutputCount} / #{comSewMachineTarget}
+              h5.card-text Current Defects/Target: 
+              h5.card-text.coloured
+                | #{comSewMachineDefectCount}
+                | / #{comSewMachineTarget}
+      .row
+        .col-4
+          .card.m-3(style='width: 18rem;')
+            .card-body
+              h4.card-title.mb-3 Worker Info
+              h5.card-text Current Scanned Workers: 
+              h5.card-text.coloured
+                | #{workerCount}
+        .col-4
+          .card.m-3(style='width: 18rem;')
+            .card-body
+              h4.card-title.mb-3 Production Performance
+              h5.card-text Current Products: 
+              h5.card-text.coloured #{totalProducts}
+              h5.card-text Current Passed QC Outputs: 
+              h5.card-text.coloured
+                | #{totalOutputs}
+              h5.card-text Current Defects: 
+              h5.card-text.coloured #{totalDefects}
+        .col-4
+          .card.m-3(style='width: 18rem;')
+            .card-body
+              h4.card-title.mb-3 Empty Pannel 1
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js', integrity='sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN', crossorigin='anonymous')
